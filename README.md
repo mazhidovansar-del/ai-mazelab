@@ -58,7 +58,7 @@ Suggested manual checks:
 
 - `index.html`, `styles.css`, `app.js` — application.
 - `TECHNICAL_REPORT.md` — technical report, evaluation approach and AI-use declaration draft.
-- `presentation/` — 6-slide presentation source (HTML) and a print-to-PDF guide.
+- `presentation/` — editable 6-slide PowerPoint deck, browser presentation source (HTML), and a print-to-PDF guide.
 - `DEMO_SCRIPT.md` — 2–3 minute video narration and shot list.
 - `COURSE_MAP.md` — all topics listed in the supplied syllabus.
 
