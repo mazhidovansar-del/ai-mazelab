@@ -1,0 +1,7 @@
+.DS_Store
+*.mp4
+*.mov
+*.webm
+__pycache__/
+.pytest_cache/
+node_modules/

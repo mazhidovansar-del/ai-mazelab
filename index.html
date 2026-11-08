@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#080d18" />
+  <title>Maze Lab — AI Search Studio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Maze Lab home"><span class="brand-mark">M<span>↗</span></span><span>MAZE<span class="brand-light">LAB</span></span></a>
+      <div class="top-meta"><span class="live-dot"></span> AI FUNDAMENTALS <span class="meta-divider">/</span> INTERACTIVE LAB</div>
+      <div class="top-right"><span class="course-pill">AIF1303</span><button class="icon-button" id="helpBtn" aria-label="Open help">?</button></div>
+    </header>
+
+    <section class="intro-row">
+      <div><div class="eyebrow"><span class="eyebrow-line"></span> SEARCH &amp; DECISION SYSTEMS <span class="eyebrow-line"></span></div><h1>Find the <em>intelligent</em> way.</h1><p class="subtitle">Build a world. Set the rules. Watch an agent reason its way to the goal.</p></div>
+      <div class="week-stamp"><span class="stamp-label">COURSE MAP</span><strong>W01—03</strong><span>AGENTS · SEARCH · CSP</span></div>
+    </section>
+
+    <section class="workspace">
+      <aside class="control-panel">
+        <div class="panel-heading"><span class="section-index">01</span><div><h2>Mission setup</h2><p>Configure the world &amp; agent</p></div><span class="status-chip"><i></i> READY</span></div>
+        <div class="control-section"><label class="field-label">SEARCH ALGORITHM <span class="info-dot" title="Choose how the agent explores the state space">i</span></label><div class="select-wrap"><select id="algorithm"><option value="astar">A* Search <span>· heuristic</span></option><option value="bfs">Breadth-First Search</option><option value="ucs">Uniform Cost Search</option><option value="greedy">Greedy Best-First</option></select><span class="select-chevron">⌄</span></div><div class="algorithm-note" id="algorithmNote">Balances distance so far with estimated distance to goal.</div></div>
+        <div class="control-section"><div class="field-row"><label class="field-label" for="heuristic">HEURISTIC</label><span class="field-value" id="heuristicValue">Manhattan</span></div><div class="segmented" id="heuristics"><button class="segment active" data-value="manhattan">Manhattan</button><button class="segment" data-value="euclidean">Euclidean</button></div></div>
+        <div class="control-section"><div class="field-row"><label class="field-label" for="sizeRange">GRID SIZE</label><span class="field-value"><b id="sizeValue">25 × 19</b></span></div><input id="sizeRange" class="range" type="range" min="15" max="35" step="2" value="25"><div class="range-labels"><span>SMALL</span><span>LARGE</span></div></div>
+        <div class="control-section"><div class="field-row"><label class="field-label" for="speedRange">ANIMATION SPEED</label><span class="field-value"><b id="speedValue">1×</b></span></div><input id="speedRange" class="range" type="range" min="1" max="5" value="3"><div class="range-labels"><span>CHILL</span><span>FAST</span></div></div>
+        <div class="control-section tools-section"><label class="field-label">EDIT THE MAZE <span class="info-dot" title="Click or drag on cells to draw">i</span></label><div class="tool-grid"><button class="tool active" data-tool="wall"><span class="tool-icon wall-icon"></span><span>Wall</span><kbd>W</kbd></button><button class="tool" data-tool="erase"><span class="tool-icon erase-icon">⌫</span><span>Eraser</span><kbd>E</kbd></button><button class="tool" data-tool="start"><span class="tool-icon start-icon"></span><span>Start</span><kbd>S</kbd></button><button class="tool" data-tool="goal"><span class="tool-icon goal-icon"></span><span>Goal</span><kbd>G</kbd></button><button class="tool" data-tool="weight"><span class="tool-icon weight-icon">2</span><span>Weight</span><kbd>T</kbd></button><button class="tool" id="clearBtn"><span class="tool-icon clear-icon">↺</span><span>Clear</span><kbd>⌫</kbd></button></div><p class="tool-hint">Click &amp; drag on the grid to draw</p></div>
+        <div class="panel-actions"><button class="primary-button" id="solveBtn"><span class="play-icon">▶</span> Find best path <span class="button-arrow">↗</span></button><button class="secondary-button" id="generateBtn"><span>✳</span> Generate maze</button><div class="action-row"><button class="text-button" id="stepBtn">Step through <span>→</span></button><button class="text-button" id="compareBtn">Compare algorithms <span>↗</span></button></div><button class="csp-button" id="cspBtn"><span>⌘</span> Solve a zone CSP <span>↗</span></button></div>
+      </aside>
+
+      <section class="map-column">
+        <div class="map-toolbar"><div class="map-title"><span class="map-live"></span><div><h2>THE MAZE</h2><span id="mapSubtitle">25 columns <b>·</b> 19 rows <b>·</b> 4-way movement</span></div></div><div class="map-toolbar-actions"><button class="subtle-button" id="resetBtn">↻ <span>Reset</span></button><button class="subtle-button" id="downloadBtn">⇩ <span>Export</span></button><label class="subtle-button import-button">⇧ <span>Import</span><input id="uploadInput" type="file" accept="application/json,.json" aria-label="Import maze JSON"></label></div></div>
+        <div class="board-wrap"><div class="board-frame"><div class="board-head"><span class="corner-label">ENVIRONMENT / 2D</span><span class="coord-label" id="coordLabel">X: 01 — 25&nbsp;&nbsp; Y: 01 — 19</span></div><div id="maze" class="maze" role="grid" aria-label="Editable maze grid"></div><div class="board-foot"><span><i class="foot-pulse"></i> <span id="runState">AGENT IDLE</span></span><span>PATH COST <b id="pathCost">—</b></span></div></div><div class="legend"><span><i class="legend-dot start-dot"></i> START</span><span><i class="legend-dot goal-dot"></i> GOAL</span><span><i class="legend-dot wall-dot"></i> WALL</span><span><i class="legend-dot visited-dot"></i> EXPLORED</span><span><i class="legend-dot path-dot"></i> OPTIMAL PATH</span><span><i class="legend-dot weight-dot">2</i> HIGH COST</span></div></div>
+        <div class="insight-strip"><div class="insight-icon">✳</div><div><strong id="insightTitle">A* balances what it knows with what it estimates.</strong><span id="insightText">The agent explores the most promising cells first, guided by distance to the goal.</span></div><button id="learnBtn">HOW IT WORKS <span>↗</span></button></div>
+      </section>
+    </section>
+
+    <section class="results-section"><div class="results-heading"><div><span class="section-index">02</span><h2>Agent telemetry</h2><span class="results-caption">LIVE PERFORMANCE DATA</span></div><button class="subtle-button" id="compareInline">Compare algorithms <span>↗</span></button></div><div class="metrics-grid"><article class="metric-card"><span class="metric-label">CELLS EXPLORED <i class="info-dot" title="Number of states removed from the frontier and evaluated">i</i></span><div class="metric-main"><strong id="exploredMetric">—</strong><span class="metric-unit">NODES</span></div><div class="metric-bottom"><div class="mini-bars" id="exploredBars"></div><span>Search effort</span></div></article><article class="metric-card"><span class="metric-label">PATH LENGTH <i class="info-dot" title="Number of steps from start to goal">i</i></span><div class="metric-main"><strong id="lengthMetric">—</strong><span class="metric-unit">STEPS</span></div><div class="metric-bottom"><div class="metric-meter"><i id="lengthMeter"></i></div><span id="lengthNote">Shortest route</span></div></article><article class="metric-card"><span class="metric-label">TOTAL COST <i class="info-dot" title="Sum of movement costs, including weighted cells">i</i></span><div class="metric-main"><strong id="costMetric">—</strong><span class="metric-unit">UNITS</span></div><div class="metric-bottom"><div class="cost-glyph">↗</div><span>Weighted terrain included</span></div></article><article class="metric-card"><span class="metric-label">SEARCH TIME <i class="info-dot" title="Measured locally in your browser">i</i></span><div class="metric-main"><strong id="timeMetric">—</strong><span class="metric-unit">MS</span></div><div class="metric-bottom"><div class="time-wave">∿∿∿</div><span>Local computation</span></div></article></div></section>
+    <section class="concepts"><div class="concepts-heading"><span>CONCEPTS IN THIS LAB</span><span>AI FUNDAMENTALS · COURSE SYLLABUS</span></div><div class="concept-row"><article><span class="concept-num">01</span><div><b>Intelligent Agents</b><p>Agent · environment · percepts · actions</p></div><span class="week-tag">WEEK 01</span></article><article><span class="concept-num">02</span><div><b>Search &amp; Heuristics</b><p>State space · frontier · A* · path cost</p></div><span class="week-tag">WEEK 02</span></article><article><span class="concept-num">03</span><div><b>Local Search &amp; CSP</b><p>Backtracking · MRV · forward checking</p></div><span class="week-tag">WEEK 03</span></article></div></section>
+    <footer><span>MAZELAB <span class="footer-light">· AI FUNDAMENTALS · 2026</span></span><span>BUILT TO MAKE REASONING VISIBLE <b>✳</b></span><a href="README.md">PROJECT NOTES ↗</a></footer>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <dialog id="modal" class="modal"><div class="modal-top"><span class="modal-kicker">MAZELAB / FIELD NOTES</span><button id="closeModal" aria-label="Close">×</button></div><div id="modalContent"></div></dialog>
+  <script src="app.js"></script>
+</body>
+</html>
