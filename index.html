@@ -48,8 +48,13 @@
 
       <aside class="control-panel">
         <div class="step-label"><span>1</span><div><b>Choose how to search</b><small>The default A* method is a good place to start.</small></div></div>
-        <label class="select-label" for="algorithm">Search method</label>
-        <div class="select-wrap"><select id="algorithm"><option value="astar">A* — balances distance and path cost</option><option value="bfs">Breadth-first — fewest moves</option><option value="ucs">Uniform-cost — lowest total cost</option><option value="greedy">Greedy — follows the goal estimate</option></select><span class="select-chevron">⌄</span></div>
+        <span class="select-label">Search method</span>
+        <div class="algorithm-picker" role="group" aria-label="Choose a search method">
+          <button class="algorithm-card selected" type="button" data-algorithm="astar" aria-pressed="true"><span class="algorithm-symbol">A*</span><span class="algorithm-copy"><b>A* search</b><small>Balanced route</small></span><span class="algorithm-check">✓</span></button>
+          <button class="algorithm-card" type="button" data-algorithm="bfs" aria-pressed="false"><span class="algorithm-symbol">↔</span><span class="algorithm-copy"><b>Breadth-first</b><small>Fewest moves</small></span><span class="algorithm-check">✓</span></button>
+          <button class="algorithm-card" type="button" data-algorithm="ucs" aria-pressed="false"><span class="algorithm-symbol">$</span><span class="algorithm-copy"><b>Uniform-cost</b><small>Lowest cost</small></span><span class="algorithm-check">✓</span></button>
+          <button class="algorithm-card" type="button" data-algorithm="greedy" aria-pressed="false"><span class="algorithm-symbol">⌖</span><span class="algorithm-copy"><b>Greedy</b><small>Chases the goal</small></span><span class="algorithm-check">✓</span></button>
+        </div>
         <p class="algorithm-note" id="algorithmNote">Balances distance so far with estimated distance to the goal.</p>
 
         <details class="settings-details">
