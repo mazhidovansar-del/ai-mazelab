@@ -31,3 +31,37 @@ footer{font-size:11px;color:#536271}footer a{color:#536271}
 .lab-field{font-size:11px}.lab-field b{font-size:11px}.lab-kicker{font-size:10px;color:#536271}.belief-legend{font-size:10px;color:#536271}.lab-result p{font-size:12px!important}.lab-result code{font-size:10px}.lab-footnote{font-size:10px;color:#536271}.action-costs article span{font-size:10px;color:#536271}
 .mode-controls label{font-size:10px}.mode-controls label b{font-size:10px}.mode-legend{font-size:11px;border-left-width:1px;color:#554b6b}
 .primary-button{background:var(--cyan-dark)}.primary-button:hover{background:#00566a}
+
+/* Impeccable: refine the existing learning workspace and its inline comparison. */
+.app-shell{max-width:1360px;padding:0 36px}
+.topbar{height:68px}
+.brand-mark{width:32px;height:32px;border-radius:9px;font-weight:750}
+.intro{padding:34px 0 25px}
+.intro h1{font-size:34px;letter-spacing:-.9px}
+.intro-copy{max-width:58ch;font-size:14px;color:#526474}
+.workspace{grid-template-columns:minmax(0,1fr) 330px;gap:22px}
+.map-column,.control-panel{border-radius:12px;box-shadow:0 8px 28px #20374a0a}
+.map-column{padding:20px 21px 18px}
+.control-panel{padding:19px;gap:14px}
+.board-wrap{padding:11px;border-radius:9px;background:#fbfdfe}
+.maze{gap:2px;border-radius:4px;background:#c9dfe5}
+.cell{border-radius:1px}
+.algorithm-picker{gap:8px}
+.algorithm-card{min-height:66px;border-radius:9px;background:#fff;box-shadow:0 1px 2px #102b3b08}
+.algorithm-card.selected{background:#f0fafb;box-shadow:inset 0 0 0 1px #2b9eb0}
+.algorithm-symbol{border-radius:9px}
+.primary-button{height:46px;border-radius:8px;box-shadow:0 3px 8px #076b8226}
+.step-button,.quiet-button,.tool{border-radius:7px;min-height:36px}
+.inline-comparison{margin-top:16px;border:1px solid #dce7ec;border-radius:10px;padding:0 13px 11px;background:#f9fcfd}
+.inline-comparison>summary{padding:12px 1px;color:#26394b;font-size:12px;font-weight:650}
+.inline-comparison>summary:after{color:#076b82}
+.inline-comparison>p{margin:0 1px 7px;color:#536575;font-size:11px;line-height:1.5}
+.inline-comparison .comparison{margin:0;font-size:11px}
+.inline-comparison .comparison th{padding:8px 7px;color:#526474;font-size:10px;text-transform:uppercase;letter-spacing:.04em}
+.inline-comparison .comparison td{padding:9px 7px;color:#26394b;font-variant-numeric:tabular-nums}
+.inline-comparison .comparison tr.best td:first-child{color:#08785b;font-weight:700}
+.inline-comparison .comparison-note{margin:9px 1px 0;color:#455b6c;font-size:11px}
+.comparison-wrap{overflow-x:auto}
+summary:focus-visible,.primary-button:focus-visible,.step-button:focus-visible,.quiet-button:focus-visible,.tool:focus-visible{outline:3px solid #49aabd;outline-offset:2px}
+@media(max-width:900px){.app-shell{padding:0 20px}.workspace{grid-template-columns:minmax(0,1fr) 290px;gap:14px}}
+@media(max-width:700px){.app-shell{padding:0 12px}.intro{padding:24px 0 19px}.intro h1{font-size:28px}.workspace{grid-template-columns:1fr}.map-column{padding:13px}.inline-comparison{margin-top:12px}}

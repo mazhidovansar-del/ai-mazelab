@@ -44,6 +44,12 @@
           <div><span>Cells explored</span><b id="exploredMetric">—</b></div>
           <div class="result-time"><span>Search time</span><b><strong id="timeMetric">—</strong> ms</b></div>
         </div>
+        <details class="inline-comparison" id="inlineComparison">
+          <summary>Compare search methods</summary>
+          <p>All four methods use this maze and the same terrain costs.</p>
+          <div class="comparison-wrap"><table class="comparison"><thead><tr><th>Method</th><th>Visited</th><th>Moves</th><th>Cost</th></tr></thead><tbody id="comparisonRows"></tbody></table></div>
+          <p class="comparison-note" id="comparisonNote">A* and uniform-cost search find the lowest-cost route. BFS minimizes moves when each step costs the same; Greedy may trade route cost for fewer explored cells.</p>
+        </details>
       </section>
 
       <aside class="control-panel">
