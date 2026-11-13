@@ -68,3 +68,13 @@ summary:focus-visible,.primary-button:focus-visible,.step-button:focus-visible,.
 .mode-controls label{gap:4px;line-height:1.35}
 .mode-controls .param-help{font-size:10px;line-height:1.35;font-weight:400;color:#526474}
 .mode-controls select{margin-top:2px}
+.agent-cell{z-index:4;overflow:visible!important}
+.agent-marker{position:absolute;inset:1px;width:calc(100% - 2px);height:calc(100% - 2px);z-index:5;overflow:visible;filter:drop-shadow(0 1px 1px #0d344866);pointer-events:none}
+@media(prefers-reduced-motion:reduce){.cell{transition:none}}
+.inline-comparison[hidden]{display:none!important}
+.comparison-heading{display:flex;align-items:center;justify-content:space-between;padding:11px 0 8px;border-bottom:1px solid #dce7ec;margin-bottom:9px}
+.comparison-heading h3{margin:0;color:#26394b;font-size:13px;font-weight:700}
+.comparison-heading button{width:28px;height:28px;border:1px solid #dce7ec;border-radius:6px;background:#fff;color:#526474;font-size:18px;cursor:pointer}
+.comparison-heading button:hover{background:#edf5f7;color:#17384a}
+.inline-comparison{display:none}
+.inline-comparison:target{display:block}

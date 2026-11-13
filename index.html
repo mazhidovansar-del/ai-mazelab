@@ -27,6 +27,7 @@
         <div class="map-toolbar">
           <div class="map-heading"><span class="map-live"></span><div><h2>Your maze</h2><span id="mapSubtitle">25 columns · 19 rows</span></div></div>
           <div class="toolbar-actions">
+            <button class="quiet-button" id="compareBtn" type="button" aria-controls="inlineComparison">Compare methods</button>
             <button class="quiet-button" id="generateBtn">New maze</button>
             <button class="quiet-button" id="resetBtn">Reset</button>
           </div>
@@ -44,12 +45,12 @@
           <div><span>Cells explored</span><b id="exploredMetric">—</b></div>
           <div class="result-time"><span>Search time</span><b><strong id="timeMetric">—</strong> ms</b></div>
         </div>
-        <details class="inline-comparison" id="inlineComparison">
-          <summary>Compare search methods</summary>
+        <section class="inline-comparison" id="inlineComparison" aria-labelledby="comparisonTitle">
+          <div class="comparison-heading"><h3 id="comparisonTitle">Search methods on this maze</h3><button id="closeComparison" type="button" aria-label="Close comparison">×</button></div>
           <p>All four methods use this maze and the same terrain costs.</p>
           <div class="comparison-wrap"><table class="comparison"><thead><tr><th>Method</th><th>Visited</th><th>Moves</th><th>Cost</th></tr></thead><tbody id="comparisonRows"></tbody></table></div>
           <p class="comparison-note" id="comparisonNote">A* and uniform-cost search find the lowest-cost route. BFS minimizes moves when each step costs the same; Greedy may trade route cost for fewer explored cells.</p>
-        </details>
+        </section>
       </section>
 
       <aside class="control-panel">
@@ -99,7 +100,7 @@
         <details class="more-details">
           <summary>Compare methods and learn AI</summary>
           <div class="details-content">
-            <button class="link-button" id="compareBtn">Compare search methods <span>↗</span></button>
+            <a class="link-button" id="compareLink" href="#inlineComparison">Compare search methods <span>↗</span></a>
             <button class="link-button" id="cspBtn">Try the constraint puzzle <span>↗</span></button>
             <button class="link-button" id="bayesBtn">Bayesian corridor lab <span>↗</span></button>
             <button class="link-button" id="mdpBtn">MDP risk lab <span>↗</span></button>
