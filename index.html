@@ -19,7 +19,7 @@
       <div>
         <p class="eyebrow">AI MAZE SOLVER</p>
         <h1>Find a path through the maze.</h1>
-        <p class="intro-copy">Choose a search method, then watch the agent find the goal.</p>
+        <p class="intro-copy">Choose a method, adjust its settings, then watch the agent react.</p>
       </div>
     </section>
 
@@ -38,6 +38,7 @@
           <div class="board-foot"><span><i class="foot-pulse"></i><span id="runState">Ready to solve</span></span><span>Path cost <b id="pathCost">—</b></span></div>
         </div>
         <p class="edit-hint">Green is the start. Orange is the goal. Choose <b>Customize maze</b> to edit cells.</p>
+        <p class="mode-legend" id="modeLegend" hidden></p>
         <div class="result-strip" aria-live="polite">
           <div><span>Moves</span><b id="lengthMetric">—</b></div>
           <div><span>Cost</span><b id="costMetric">—</b></div>
@@ -47,15 +48,19 @@
       </section>
 
       <aside class="control-panel">
-        <div class="step-label"><span>1</span><div><b>Choose how to search</b><small>The default A* method is a good place to start.</small></div></div>
-        <span class="select-label">Search method</span>
-        <div class="algorithm-picker" role="group" aria-label="Choose a search method">
+        <div class="step-label"><span>1</span><div><b>Choose how the agent decides</b><small>The default A* method is a good place to start.</small></div></div>
+        <span class="select-label">Algorithm or model</span>
+        <div class="algorithm-picker" role="group" aria-label="Choose an algorithm"><span class="algorithm-category">Path search</span>
           <button class="algorithm-card selected" type="button" data-algorithm="astar" aria-pressed="true"><span class="algorithm-symbol">A*</span><span class="algorithm-copy"><b>A* search</b><small>Balanced route</small></span><span class="algorithm-check">✓</span></button>
           <button class="algorithm-card" type="button" data-algorithm="bfs" aria-pressed="false"><span class="algorithm-symbol">↔</span><span class="algorithm-copy"><b>Breadth-first</b><small>Fewest moves</small></span><span class="algorithm-check">✓</span></button>
           <button class="algorithm-card" type="button" data-algorithm="ucs" aria-pressed="false"><span class="algorithm-symbol">$</span><span class="algorithm-copy"><b>Uniform-cost</b><small>Lowest cost</small></span><span class="algorithm-check">✓</span></button>
           <button class="algorithm-card" type="button" data-algorithm="greedy" aria-pressed="false"><span class="algorithm-symbol">⌖</span><span class="algorithm-copy"><b>Greedy</b><small>Chases the goal</small></span><span class="algorithm-check">✓</span></button>
+          <span class="algorithm-category">Reason under uncertainty</span>
+          <button class="algorithm-card advanced-card" type="button" data-algorithm="bayes" aria-pressed="false"><span class="algorithm-symbol">P(B)</span><span class="algorithm-copy"><b>Bayesian</b><small>Updates corridor risk</small></span><span class="algorithm-check">✓</span></button>
+          <button class="algorithm-card advanced-card" type="button" data-algorithm="mdp" aria-pressed="false"><span class="algorithm-symbol">↗</span><span class="algorithm-copy"><b>MDP</b><small>Proceed or detour</small></span><span class="algorithm-check">✓</span></button>
         </div>
         <p class="algorithm-note" id="algorithmNote">Balances distance so far with estimated distance to the goal.</p>
+        <div id="algorithmSettings"></div>
 
         <details class="settings-details">
           <summary>More search settings</summary>

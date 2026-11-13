@@ -14,10 +14,10 @@ Then visit `http://localhost:8000`.
 
 ## Interactions
 
-- Choose A*, BFS, uniform-cost search (UCS), or Greedy best-first search.
+- Choose A*, BFS, uniform-cost search (UCS), Greedy, Bayesian inference, or MDP from one interactive method picker. Bayesian and MDP modes visualize the uncertain corridor on the maze and reroute according to the updated belief or expected-cost policy.
 - Change the heuristic (Manhattan or Euclidean) and grid size.
 - Draw/remove walls, reposition start and goal, and add high-cost cells (entry cost 2).
-- Animate the search, inspect it step by step, compare all search algorithms, solve a zone CSP with backtracking/MRV/forward checking, and export/re-import maze JSON. The expandable **Compare methods and learn AI** section also includes two interactive labs: Bayesian corridor-risk updating and an MDP decision between Proceed and Detour.
+- Animate the search, inspect it step by step, compare all search algorithms, solve a zone CSP with backtracking/MRV/forward checking, and export/re-import maze JSON. Select Bayesian or MDP in the same picker to visualize corridor risk and the resulting route choice; the expandable **Compare methods and learn AI** section keeps standalone parameter labs for both models too.
 - Use keyboard shortcuts: **W** wall, **E** eraser, **S** start, **G** goal, **T** weighted cell.
 
 ## Course-topic alignment
