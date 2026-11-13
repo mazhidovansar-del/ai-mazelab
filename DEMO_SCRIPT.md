@@ -1,6 +1,6 @@
-# Demo video script (about 2 minutes 30 seconds)
+# Demo video script (about 3 minutes)
 
-Record the browser at 1080p, with the maze and telemetry visible. Replace the bracketed names with the actual team members. Show the real run; do not use fabricated metrics.
+Keep the final video between 2 and 3 minutes; trim the narration or actions to fit. Record the browser at 1080p, with the maze and telemetry visible. Replace the bracketed names with the actual team members. Show the real run; do not use fabricated metrics.
 
 | Time | Screen / action | Narration |
 |---|---|---|
@@ -11,7 +11,9 @@ Record the browser at 1080p, with the maze and telemetry visible. Replace the br
 | 1:15–1:35 | Draw a wall; solve again | “The user can change the environment. This wall changes which transitions are legal, so the agent has to search the updated state space.” |
 | 1:35–1:55 | Add a weighted cell; compare algorithms | “Purple cells cost two to enter. UCS and A* account for that cost. BFS minimizes moves only, while Greedy follows the heuristic and is not guaranteed to return the cheapest route.” |
 | 1:55–2:12 | Step-through; show compare table | “Step-through exposes the expansion order, and the comparison view runs all four strategies on the same maze. This connects to weeks one and two of the syllabus.” |
-| 2:12–2:30 | Click **Solve a zone CSP**; show assignment and course map | “For week three, six zone variables receive one of three modes. Backtracking uses minimum-remaining-values ordering and forward checking to satisfy adjacency and domain constraints. Hill climbing and simulated annealing are outside our scope. [Name] worked on [actual contribution], and [Name] worked on [actual contribution].” |
+| 2:12–2:30 | Open the Bayesian corridor lab; change the prior or sensor report | “The Bayesian lab begins with a prior chance that the corridor is blocked. Bayes' rule combines that belief with the sensor's reliability and updates the posterior. The sliders make the effect of the prior and evidence visible.” |
+| 2:30–2:48 | Open the MDP risk lab; vary blocked belief | “The MDP lab has Clear and Blocked states. Value iteration compares the discounted expected costs of Proceed and Detour, including transition risk and the cost of being blocked. This is a simplified teaching model.” |
+| 2:48–3:00 | Click **Try the constraint puzzle**; show assignment | “For week three, six zone variables receive one of three modes. Backtracking uses minimum-remaining-values ordering and forward checking to satisfy adjacency and domain constraints. [Name] worked on [actual contribution], and [Name] worked on [actual contribution].” |
 
 ## Recording checklist
 

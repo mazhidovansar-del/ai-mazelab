@@ -1,6 +1,6 @@
 # MazeLab — AI Search Studio
 
-An interactive, browser-based AI project for **AI Fundamentals (AIF1303)**. It visualizes intelligent-agent problem formulation, uninformed and heuristic state-space search, and a real constraint satisfaction solver for zone planning.
+An interactive, browser-based AI project for **AI Fundamentals (AIF1303)**. It visualizes intelligent-agent problem formulation, search, constraint satisfaction, Bayesian probability updates and two-state MDP decisions.
 
 ## Run locally
 
@@ -17,7 +17,7 @@ Then visit `http://localhost:8000`.
 - Choose A*, BFS, uniform-cost search (UCS), or Greedy best-first search.
 - Change the heuristic (Manhattan or Euclidean) and grid size.
 - Draw/remove walls, reposition start and goal, and add high-cost cells (entry cost 2).
-- Animate the search, inspect it step by step, compare all search algorithms, solve a zone CSP with backtracking/MRV/forward checking, and export/re-import maze JSON.
+- Animate the search, inspect it step by step, compare all search algorithms, solve a zone CSP with backtracking/MRV/forward checking, and export/re-import maze JSON. The expandable **Compare methods and learn AI** section also includes two interactive labs: Bayesian corridor-risk updating and an MDP decision between Proceed and Detour.
 - Use keyboard shortcuts: **W** wall, **E** eraser, **S** start, **G** goal, **T** weighted cell.
 
 ## Course-topic alignment
@@ -28,9 +28,11 @@ The official syllabus covers ten weeks. This project implements a focused subset
 |---|---|---|
 | 1 | Introduction to AI: agents and environments | Agent, goal, observable deterministic grid environment, legal actions |
 | 2 | Uninformed search, A* and heuristics | BFS, UCS, A*, Greedy, Manhattan/Euclidean heuristics, explored-state visualization |
-| 3 | Local search and constraint satisfaction | Interactive zone-coloring CSP with backtracking, minimum-remaining-values ordering and forward checking; editable maze constraints |
+| 3 | Local search and constraint satisfaction | Interactive zone-coloring CSP with backtracking, minimum-remaining-values ordering and forward checking; editable maze constraints (hill climbing, random restart and simulated annealing are not implemented) |
+| 5 | Markov decision processes and reinforcement learning | Two-state Clear/Blocked MDP; value iteration compares discounted expected costs for Proceed vs Detour |
+| 6 | Probability and Bayesian networks | Bayesian corridor demo updates a prior blocked probability with an alert/clear sensor report using Bayes' rule |
 
-The syllabus also covers local-search methods (hill climbing, random restart, simulated annealing), which are not implemented, plus adversarial search/game trees (week 4), MDPs and reinforcement learning (5), probability and Bayesian networks (6), HMMs (7), rational decisions/classical ML (8), neural networks (9), and LLMs/generative AI/AI safety (10). Those topics are not implemented in this project.
+The app implements selected topics from weeks 1–3, 5 and 6. The MDP and Bayesian labs are simplified teaching models, not real-world navigation or sensor systems. Other syllabus topics remain outside scope: adversarial search/game trees (week 4), reinforcement learning/Q-learning beyond the MDP example (week 5), HMMs (week 7), classical ML (week 8), neural networks (week 9), and LLMs/generative AI/AI safety (week 10).
 
 ## Algorithms and interpretation
 
@@ -38,6 +40,8 @@ The syllabus also covers local-search methods (hill climbing, random restart, si
 - **BFS** minimizes the number of moves when all steps have equal cost; it does not account for weighted cells.
 - **UCS** prioritizes accumulated path cost and finds the minimum-cost route with the supplied positive cell-entry costs.
 - **Greedy best-first** prioritizes estimated distance only and is not guaranteed to find an optimal route.
+- **Bayesian inference lab:** computes `P(blocked | report)` from a user-set prior, sensor sensitivity, false-alarm rate and alert/clear observation.
+- **Two-state MDP lab:** models Clear and Blocked states, action-specific transitions and costs; value iteration estimates discounted long-term cost, then compares Proceed and Detour at the user-set initial belief.
 
 The search is synchronous JavaScript in the browser. The displayed runtime measures algorithm computation only and varies by device/browser. Animation speed affects playback, not the computed route.
 
@@ -53,6 +57,8 @@ Suggested manual checks:
 4. Place a high-cost cell on a corridor and compare UCS/A* with BFS/Greedy.
 5. Change grid size, generate a maze, use step-through, export JSON and import that export.
 6. Import malformed JSON and confirm the app shows an error without changing the current maze.
+7. Open the Bayesian lab; change the prior and sensor report and confirm the posterior and formula update.
+8. Open the MDP lab; vary blockage belief and costs and confirm the expected costs and recommended action update (higher risk can favor Detour).
 
 ## Project files
 

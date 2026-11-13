@@ -17,6 +17,6 @@ Source: supplied 2026–2027 AI Fundamentals syllabus PDF. The syllabus schedule
 
 ## Selected project scope
 
-MazeLab implements weeks 1–3: agent/environment modeling; BFS/UCS/A*/Greedy search; and a zone-coloring CSP solved with backtracking, MRV variable ordering and forward checking. The maze editor also exposes path constraints. Week 3's hill climbing, random restart and simulated annealing are not implemented. Topics from weeks 4–10 are listed for syllabus context but are not claimed as implemented.
+MazeLab implements selected material from weeks 1–3, 5 and 6: agent/environment modeling; BFS/UCS/A*/Greedy search; a zone-coloring CSP solved with backtracking, MRV and forward checking; a two-state Clear/Blocked MDP compared with value iteration; and Bayesian updating of corridor-blockage probability from a sensor report. The MDP is a small discounted-cost teaching model, not full reinforcement learning. Week 3's hill climbing, random restart and simulated annealing are not implemented; neither are game-tree search (week 4), Q-learning (week 5), HMMs (week 7), classical ML (week 8), neural networks (week 9), or generative AI/safety (week 10).
 
 This distinction keeps the project aligned with the course while avoiding an inaccurate claim that every syllabus topic is present in the application.
